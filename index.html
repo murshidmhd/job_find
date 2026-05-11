@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexTable | Smart Data Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="NexTable is a premium Excel-like data platform integrated with an AI-powered chatbot for seamless company tracking.">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span>NexTable</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="active" id="nav-dashboard"><a href="#"><i class="icon-grid"></i> Dashboard</a></li>
+                    <li id="nav-platforms"><a href="#"><i class="icon-platforms"></i> Apply Platforms</a></li>
+                    <li><a href="#"><i class="icon-settings"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Search companies...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="export-csv">Export Excel</button>
+                    <button class="btn btn-primary" id="add-manual">Add Manual</button>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <section class="table-section">
+                <div class="section-header">
+                    <h2>Company Database</h2>
+                    <p>Track and manage your organization list with real-time updates.</p>
+                </div>
+
+                <div class="stats-container" id="stats-container">
+                    <div class="stat-card">
+                        <span class="stat-label">Total List</span>
+                        <h3 id="stat-total">0</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Cold Mails</span>
+                        <h3 id="stat-cold">0</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Applied</span>
+                        <h3 id="stat-applied" style="color: var(--secondary);">0</h3>
+                    </div>
+                </div>
+                
+                <div class="table-container glass">
+                    <table id="company-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Company Name</th>
+                                <th>Focus</th>
+                                <th>Contact</th>
+                                <th>Applied Via</th>
+                                <th>Date Added</th>
+                                <th>Cold Mail</th>
+                                <th>Applied</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows will be injected here -->
+                            <tr class="empty-state">
+                                <td colspan="6">No companies added yet. Use the chatbot to add one!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Platforms Section -->
+            <section class="platforms-section" id="platforms-section" style="display:none;">
+                <div class="section-header">
+                    <h2>Job Apply Platforms</h2>
+                    <p>Quick access to your favorite job search and application portals.</p>
+                </div>
+                
+                <div class="platforms-grid" id="platforms-grid">
+                    <!-- Cards will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Chatbot Interface -->
+        <div class="chat-toggle" id="chat-toggle">
+            <span class="pulse"></span>
+            <i class="icon-chat">💬</i>
+        </div>
+
+        <aside class="chat-panel" id="chat-panel">
+            <div class="chat-header">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3>NexBot</h3>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" id="close-chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I'm NexBot. Share a company name with me, and I'll add it to your table instantly.
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a company name...">
+                <button id="send-chat">Send</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
