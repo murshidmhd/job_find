@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statCold = document.getElementById('stat-cold');
     const statApplied = document.getElementById('stat-applied');
 
-    // Seed Data
+    // Seed Data (Job Hunt focus only)
     const initialSeedData = [
         { name: "Silent Infotech", focus: "ERP & AI Agents", contact: "jobs@silentinfotech.com", platform: "Email", coldMail: true, applied: false },
         { name: "Arcraft Infotech", focus: "IT Training", contact: "career@arcraftinfotech.com", platform: "WhatsApp", coldMail: true, applied: false },
@@ -57,18 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let companies = JSON.parse(localStorage.getItem('nexTableCompanies')) || [];
 
-    // Migration logic for old data
-    companies = companies.map(c => {
-        if (c.status && c.coldMail === undefined) {
-            return {
-                ...c,
-                coldMail: c.status.toLowerCase().includes('cold'),
-                applied: c.status.toLowerCase() === 'applied',
-                status: undefined
-            };
-        }
-        return c;
-    });
+    // Filter out Instagram-only leads if they were accidentally saved
+    companies = companies.filter(c => c.platform !== 'Instagram');
 
     function updateStats() {
         statTotal.textContent = companies.length;
@@ -110,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Table
     function initTable() {
         tableBody.innerHTML = '';
         if (companies.length === 0) {
@@ -138,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Chatbot
+    // Chatbot logic
     chatToggle.addEventListener('click', () => {
         chatPanel.classList.toggle('active');
         if (chatPanel.classList.contains('active')) chatInput.focus();
@@ -175,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function addCompany(name, focus = "General", contact = "N/A", platform = "Manual", coldMail = false, applied = true) {
+    function addCompany(name, focus = "General", contact = "N/A", platform = "Manual", coldMail = false, applied = false) {
         const company = {
             id: Date.now(),
             name: name,
@@ -218,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         tableBody.appendChild(row);
 
-        // Toggle Listeners
         row.querySelector('.toggle-cold').addEventListener('click', () => {
             company.coldMail = !company.coldMail;
             saveAndRefresh();
