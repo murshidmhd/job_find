@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Internshala", desc: "Best internship platform for students.", url: "https://internshala.com", logo: "https://www.google.com/s2/favicons?domain=internshala.com&sz=128" },
         { name: "Foundit", desc: "Leading job search portal (formerly Monster).", url: "https://foundit.in", logo: "https://www.google.com/s2/favicons?domain=foundit.in&sz=128" },
         { name: "AmbitionBox", desc: "Discover best places to work with reviews.", url: "https://ambitionbox.com", logo: "https://www.google.com/s2/favicons?domain=ambitionbox.com&sz=128" },
-        { name: "Talent.com", desc: "A centralized job board for everything.", url: "https://talent.com", logo: "https://www.google.com/s2/favicons?domain=talent.com&sz=128" }
+        { name: "Talent.com", desc: "A centralized job board for everything.", url: "https://talent.com", logo: "https://www.google.com/s2/favicons?domain=talent.com&sz=128" },
+        { name: "beBee", desc: "Professional network and job portal.", url: "https://bebee.com", logo: "https://www.google.com/s2/favicons?domain=bebee.com&sz=128" },
+        { name: "SimplyHired", desc: "Job search engine and career portal.", url: "https://simplyhired.com", logo: "https://www.google.com/s2/favicons?domain=simplyhired.com&sz=128" }
     ];
 
     let companies = JSON.parse(localStorage.getItem('nexTableCompanies')) || [];
